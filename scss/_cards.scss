@@ -1,0 +1,60 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, v.$card-width);
+  justify-content: center;
+  gap: v.$gap;
+  margin-top: 20px;
+
+  article {
+    width: v.$card-width;
+    padding: 15px;
+    border: 2px solid #ddd;
+    text-align: center;
+    background-color: white;
+
+    @include m.hover-lift;
+
+    h3 {
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .precio {
+      font-size: 18px;
+      font-weight: bold;
+      color: #000;
+
+      &::before { content: "$ "; }
+    }
+  }
+
+  img {
+    width: 100%;
+    height: v.$img-h;
+    object-fit: cover;
+  }
+}
+
+@include m.respond(tablet) {
+  .products-grid { grid-template-columns: repeat(2, v.$card-width); }
+}
+
+@include m.respond(mobile) {
+  .products-grid { grid-template-columns: 1fr; margin: 10px; }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.98); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.products-grid article {
+  animation: popIn 0.35s ease both;
+}

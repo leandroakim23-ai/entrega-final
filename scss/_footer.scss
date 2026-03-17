@@ -1,0 +1,32 @@
+footer {
+  background-color: rgba(112, 111, 110, 0.55);
+  padding: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
+
+  h4 { margin-bottom: 10px; }
+
+  ul {
+    list-style: none;
+
+    li a {
+      text-decoration: none;
+      color: black;
+
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  p {
+    background-color: black;
+    color: white;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  footer { grid-template-columns: 1fr; }
+}
